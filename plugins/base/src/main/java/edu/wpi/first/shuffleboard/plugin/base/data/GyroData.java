@@ -25,11 +25,11 @@ public final class GyroData extends ComplexData<GyroData> {
   }
   
   public double getWrappedValue() {
-	  double tempval = value;
-	  while (tempval<0) {
-		  tempval+=360;
-	  }
-	  return tempval%360;
+    if (value < 0) {
+      return ((value % 360) + 360) % 360;
+    } else {
+      return value % 360;
+    }
   }
 
   public double getValue() {
