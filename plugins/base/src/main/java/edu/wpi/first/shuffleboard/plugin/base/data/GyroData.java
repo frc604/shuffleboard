@@ -24,6 +24,10 @@ public final class GyroData extends ComplexData<GyroData> {
     return ImmutableMap.of("Value", value);
   }
   
+  /**
+   * Version of getValue that always returns value between 0 and 360.
+   * This is guaranteed to be displayed properly by the Gyro widget. 
+   */
   public double getWrappedValue() {
     if (value < 0) {
       return ((value % 360) + 360) % 360;
